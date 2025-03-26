@@ -8,6 +8,55 @@
 
 using json = nlohmann::json;
 
+
+class TestConfigManager {
+    private:
+        std::string dbHost;
+        std::string dbPort;
+        std::string dbName;
+        std::string dbUser;
+        std::string dbPassword;
+    public:
+        TestConfigManager() {
+            dbHost = "localhost";
+            dbPort = "5432";
+            dbName = "test_db";
+            dbUser = "test_user";
+            dbPassword = "test_password";
+        }
+
+        std::string getDbHost() {
+            return dbHost;
+        }
+
+        std::string getDbPort() {
+            return dbPort;
+        }
+
+        std::string getDbName() {
+            return dbName;
+        }
+
+        std::string getDbUser() {
+            return dbUser;
+        }
+
+        std::string getDbPassword() {
+            return dbPassword;
+        }
+};
+
+
+// function to test the ConfigManager class
+void testConfigManager() {
+    TestConfigManager configManager;
+    std::cout << "DB Host: " << configManager.getDbHost() << std::endl;
+    std::cout << "DB Port: " << configManager.getDbPort() << std::endl;
+    std::cout << "DB Name: " << configManager.getDbName() << std::endl;
+    std::cout << "DB User: " << configManager.getDbUser() << std::endl;
+    std::cout << "DB Password: " << configManager.getDbPassword() << std::endl;
+}
+
 class ConfigManager {
 public:
     bool loadConfig(const std::string& environment) {

@@ -23,6 +23,16 @@ public:
         }
     }
 
+    bool record(var cab_record, const boost::asio::ip::udp::endpoint& target) {
+        try {
+            socket_.send_to(boost::asio::buffer(cab_record), target);
+            return true;
+        } catch (const std::exception& e) {
+            std::cerr << "Error sending UDP message: " << e.what() << std::endl;
+            return false;
+        }
+    }
+
     bool send(const std::string& message, const boost::asio::ip::udp::endpoint& target) {
         try {
             socket_.send_to(boost::asio::buffer(message), target);
